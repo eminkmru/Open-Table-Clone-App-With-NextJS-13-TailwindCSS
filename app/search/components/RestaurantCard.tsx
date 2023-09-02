@@ -1,4 +1,4 @@
-import { Location, PRICE } from "@prisma/client";
+import { Cuisine, Location, PRICE } from "@prisma/client";
 import Link from "next/link";
 import React from "react";
 import Price from "../../components/Price";
@@ -8,20 +8,13 @@ interface RestaurantCardProps {
     name: string;
     main_image: string;
     price: PRICE;
-    cuisine: {
-      id: number;
-      name: string;
-      created_at: Date;
-      updated_at: Date;
-    };
+    cuisine: Cuisine;
     location: Location;
     slug: string;
   };
 }
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) => {
-  console.log(restaurant);
-
   return (
     <div className="border-b flex pb-5">
       <img
@@ -38,8 +31,8 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) => {
         <div className="mb-9">
           <div className="font-light flex text-reg">
             <Price price={restaurant.price} />
-            <p className="mr-4">{restaurant.cuisine.name}</p>
-            <p className="mr-4">{restaurant.location.name}</p>
+            <p className="mr-4 capitalize">{restaurant.cuisine.name}</p>
+            <p className="mr-4 capitalize">{restaurant.location.name}</p>
           </div>
         </div>
         <div className="text-red-600">
