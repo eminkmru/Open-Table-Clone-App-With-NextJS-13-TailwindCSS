@@ -7,7 +7,7 @@ const Searchbar = () => {
   const [location, setLocation] = useState<string>();
   const router = useRouter();
   return (
-    <div className="text-left text-lg py-3 m-auto flex justify-center">
+    <div className="text-left text-lg px-5 py-3 m-auto flex justify-center">
       <input
         className="rounded  mr-3 p-2 w-[450px]"
         type="text"
