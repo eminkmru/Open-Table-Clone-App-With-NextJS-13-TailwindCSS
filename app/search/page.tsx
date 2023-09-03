@@ -6,7 +6,15 @@ import SearchSidebar from "./components/SearchSidebar";
 
 const prisma = new PrismaClient();
 
-const fetchRestaurantsByCity = async (city: string | undefined) => {
+interface SearchParams {
+  city?: string;
+  cuisine?: string;
+  price?: PRICE;
+}
+
+const fetchRestaurantsByCity = async (searchParams: SearchParams) => {
+  const where: any = {};
+
   const select = {
     id: true,
     name: true,
@@ -17,16 +25,33 @@ const fetchRestaurantsByCity = async (city: string | undefined) => {
     slug: true,
   };
 
-  if (!city) return prisma.restaurant.findMany({ select });
+  if (searchParams.city) {
+    const location = {
+      name: {
+        equals: searchParams.city.toLowerCase(),
+      },
+    };
+    where.location = location;
+  }
+
+  if (searchParams.cuisine) {
+    const cuisine = {
+      name: {
+        equals: searchParams.cuisine.toLowerCase(),
+      },
+    };
+    where.cuisine = cuisine;
+  }
+
+  if (searchParams.price) {
+    const price = {
+      equals: searchParams.price,
+    };
+    where.price = price;
+  }
 
   return await prisma.restaurant.findMany({
-    where: {
-      location: {
-        name: {
-          equals: city.toLowerCase(),
-        },
-      },
-    },
+    where,
     select,
   });
 };
@@ -39,12 +64,8 @@ const fetchCusines = async () => {
   return await prisma.cuisine.findMany();
 };
 
-const Seach = async ({
-  searchParams,
-}: {
-  searchParams: { city?: string; cuisine?: string; price?: PRICE };
-}) => {
-  const restaurants = await fetchRestaurantsByCity(searchParams.city);
+const Seach = async ({ searchParams }: { searchParams: SearchParams }) => {
+  const restaurants = await fetchRestaurantsByCity(searchParams);
   const locations = await fetchLocations();
   const cuisines = await fetchCusines();
 
