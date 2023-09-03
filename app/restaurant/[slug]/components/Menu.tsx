@@ -3,7 +3,6 @@ import React from "react";
 import MenuCard from "./MenuCard";
 
 const Menu = ({ menu }: { menu: Items[] }) => {
-  console.log(menu);
   return (
     <main className="bg-white mt-5">
       <div>
