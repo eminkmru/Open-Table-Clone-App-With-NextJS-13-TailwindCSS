@@ -33,8 +33,14 @@ export default async function handler(
   });
 
   if (!user) {
-    return res.status(401).json({ errorMessage: "Unauthorized" });
+    return res.status(401).json({ errorMessage: "User not found." });
   }
 
-  return res.status(200).json({ user });
+  return res.status(200).json({
+    id: user.id,
+    firstName: user.first_name,
+    lastName: user.last_name,
+    city: user.city,
+    phone: user.phone,
+  });
 }

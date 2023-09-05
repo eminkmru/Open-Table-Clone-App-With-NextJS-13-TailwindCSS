@@ -3,6 +3,7 @@ import validator from "validator";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import * as jose from "jose";
+import { setCookie } from "cookies-next";
 
 const prisma = new PrismaClient();
 
@@ -21,30 +22,30 @@ export default async function handler(
           min: 2,
           max: 20,
         }),
-        errorMessage: "First name must be between 2 and 20 characters",
+        errorMessage: "First name must be between 2 and 20 characters.",
       },
       {
         valid: validator.isAlpha(firstName),
-        errorMessage: "First name must only contain letters",
+        errorMessage: "First name must only contain letters.",
       },
       {
         valid: validator.isLength(lastName, {
           min: 2,
           max: 20,
         }),
-        errorMessage: "Last name must be between 2 and 20 characters",
+        errorMessage: "Last name must be between 2 and 20 characters.",
       },
       {
         valid: validator.isAlpha(lastName),
-        errorMessage: "Last name must only contain letters",
+        errorMessage: "Last name must only contain letters.",
       },
       {
         valid: validator.isEmail(email),
-        errorMessage: "Email is not valid",
+        errorMessage: "Email is not valid.",
       },
       {
         valid: validator.isMobilePhone(phone),
-        errorMessage: "Phone number is not valid",
+        errorMessage: "Phone number is not valid.",
       },
       {
         valid: validator.isStrongPassword(password, {
@@ -62,22 +63,22 @@ export default async function handler(
           min: 2,
           max: 20,
         }),
-        errorMessage: "City must be between 2 and 20 characters",
+        errorMessage: "City must be between 2 and 20 characters.",
       },
       {
         valid: validator.isAlpha(city),
-        errorMessage: "City must only contain letters",
+        errorMessage: "City must only contain letters.",
       },
     ];
 
     validatonSchema.forEach((check) => {
-      if (!check.valid) {
+      if (check.errorMessage && !check.valid) {
         errors.push(check.errorMessage);
       }
     });
 
     if (errors.length > 0) {
-      return res.status(400).json({ message: errors });
+      return res.status(400).json({ errorMessage: errors });
     }
 
     const userWithEmail = await prisma.user.findUnique({
@@ -87,7 +88,7 @@ export default async function handler(
     });
 
     if (userWithEmail) {
-      return res.status(400).json({ errorMessage: "Email already exists" });
+      return res.status(400).json({ errorMessage: "Email already exists." });
     }
 
     const hashedPassord = await bcrypt.hash(password, 10);
@@ -114,8 +115,20 @@ export default async function handler(
       .setExpirationTime("24h")
       .sign(secret);
 
-    return res.status(200).json({ token: token });
+    setCookie("jwt", token, {
+      req,
+      res,
+      maxAge: 60 * 6 * 24,
+    });
+
+    return res.status(200).json({
+      firstName: newUser.first_name,
+      lastName: newUser.last_name,
+      email: newUser.email,
+      phone: newUser.phone,
+      city: newUser.city,
+    });
   }
 
-  return res.status(405).json({ message: "Method not allowed" });
+  return res.status(405).json({ message: "Method not allowed." });
 }
