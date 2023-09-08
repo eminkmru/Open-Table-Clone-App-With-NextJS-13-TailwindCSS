@@ -12,6 +12,7 @@ Welcome to the Restaurant Reservation Application built with NextJS 13! This cou
 - Global User Data
 - Availability And Scheduling System
 - Getting Started
+- Images from inside the app
 
 ### Introduction
 
@@ -20,14 +21,14 @@ NextJS 13 is a powerful higher-level framework built on top of React that revolu
 
 
 ### Features
-View restaurants and their details.
-Reserve tables at your favorite restaurants.
-Handle loading, error, not found, and success states seamlessly.
-Utilize server and client components effectively.
-Set up a Postgres database with Prisma for data storage.
-Implement authentication using middleware, hashers, and JSON Web Tokens (JWT).
-Store user data globally with the Context API.
-Create a sophisticated availability and scheduling system using advanced algorithms.
+- View restaurants and their details.
+- Reserve tables at your favorite restaurants.
+- Handle loading, error, not found, and success states seamlessly.
+- Utilize server and client components effectively.
+- Set up a Postgres database with Prisma for data storage.
+- Implement authentication using middleware, hashers, and JSON Web Tokens (JWT).
+- Store user data globally with the Context API.
+- Create a sophisticated availability and scheduling system using advanced algorithms.
 
 ### File System in NextJS 13
 Learn how to structure your project using the NextJS 13 file system. Define static and dynamic routes effortlessly by organizing your files and folders.
@@ -57,3 +58,11 @@ Clone the repository: git clone https://github.com/yourusername/restaurant-reser
 Install dependencies: npm install
 Configure your database and authentication settings.
 Run the application: npm run dev
+
+### Images from inside the app
+
+![image](https://github.com/eminkmru/Restaurant-Reservation-App-With-NextJS-13-TailwindCSS/assets/89755021/7342e5b6-66b5-4364-8305-b2a8a2bf5ef2)
+![image](https://github.com/eminkmru/Restaurant-Reservation-App-With-NextJS-13-TailwindCSS/assets/89755021/3ebdaf4e-c9d3-454c-8acc-29261fd61fae)
+![image](https://github.com/eminkmru/Restaurant-Reservation-App-With-NextJS-13-TailwindCSS/assets/89755021/250d4db3-d757-4249-8cce-00f345bb48d8)
+![image](https://github.com/eminkmru/Restaurant-Reservation-App-With-NextJS-13-TailwindCSS/assets/89755021/5b7f6668-a47a-47c4-8eec-ca8aca9a1400)
+
