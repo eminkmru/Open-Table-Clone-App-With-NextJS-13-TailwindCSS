@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Restaurant Reservation Application with NextJS 13
+Welcome to the Restaurant Reservation Application built with NextJS 13! This course will guide you through the amazing features that NextJS 13 has to offer by creating a restaurant reservation system where users can view restaurants and reserve tables.
 
-## Getting Started
+## Table of Contents
+- Introduction
+- Features
+- File System In Nextjs 13
+- Handling Application States
+- Rendering Modes
+- Server Side With Nextjs
+- Authentication
+- Global User Data
+- Availability And Scheduling System
+- Getting Started
 
-First, run the development server:
+Introduction
+NextJS 13 is a powerful higher-level framework built on top of React that revolutionizes web application development. In this course, you'll learn how to leverage NextJS 13 to build a restaurant reservation application from scratch.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Features
+View restaurants and their details.
+Reserve tables at your favorite restaurants.
+Handle loading, error, not found, and success states seamlessly.
+Utilize server and client components effectively.
+Set up a Postgres database with Prisma for data storage.
+Implement authentication using middleware, hashers, and JSON Web Tokens (JWT).
+Store user data globally with the Context API.
+Create a sophisticated availability and scheduling system using advanced algorithms.
+File System in NextJS 13
+Learn how to structure your project using the NextJS 13 file system. Define static and dynamic routes effortlessly by organizing your files and folders.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Handling Application States
+Master the art of handling loading, error, not found, and success states within your application to deliver a seamless user experience.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Rendering Modes
+Dive into the different rendering modes of React components. Understand when to use server components and when to opt for client components.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Server Side with NextJS
+Set up a Postgres database and define data models with Prisma (ORM). Fetch data from the database depending on the component you're using.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Authentication
+Implement authentication from scratch. Utilize middleware, hashers, and JSON Web Tokens (JWT) to secure your application.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Global User Data
+Store user data globally using the Context API for a consistent user experience throughout the application.
 
-## Learn More
+Availability and Scheduling System
+Build a sophisticated availability and scheduling system using multiple algorithms and logical thinking.
 
-To learn more about Next.js, take a look at the following resources:
+Getting Started
+To get started with this project, follow these steps:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Clone the repository: git clone https://github.com/yourusername/restaurant-reservation-app.git
+Install dependencies: npm install
+Configure your database and authentication settings.
+Run the application: npm run dev
