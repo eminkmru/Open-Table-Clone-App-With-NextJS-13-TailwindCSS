@@ -1,7 +1,8 @@
 "use client";
 import { CircularProgress } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useReservation from "../../../../hooks/useReservation";
+import { AuthenticationContext } from "../../../context/AuthContext";
 
 const Form = ({
   slug,
@@ -12,11 +13,13 @@ const Form = ({
   date: string;
   partySize: string;
 }) => {
+  const { data } = useContext(AuthenticationContext);
+
   const [inputs, setInputs] = useState({
-    bookerFirstName: "",
-    bookerLastName: "",
-    bookerPhone: "",
-    bookerEmail: "",
+    bookerFirstName: data?.firstName ? data.firstName : "",
+    bookerLastName: data?.lastName ? data.lastName : "",
+    bookerPhone: data?.phone ? data.phone : "",
+    bookerEmail: data?.email ? data.email : "",
     bookerOccasion: "",
     bookerRequests: "",
   });
